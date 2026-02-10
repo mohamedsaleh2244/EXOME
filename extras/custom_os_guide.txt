@@ -1,0 +1,85 @@
+Subject: Guide to Customizing Home Assistant (Creating a Custom OS)
+Date: 2026-02-10
+Location: /media/sf_shared_F/Home Assistant/extras/custom_os_guide.txt
+
+This guide outlines the steps to "fork" Home Assistant and customize it into your own distinct product/OS.
+
+================================================================================
+1. BRANDING & NAMING (The "Core")
+================================================================================
+To change the system name from "Home Assistant" to "YourOS":
+
+Target File: `core/homeassistant/const.py`
+Action: Modify the following constants:
+  - `APPLICATION_NAME`: Change "HomeAssistant" to "YourOS".
+  - `MAJOR_VERSION`, `MINOR_VERSION`: Manage your own versioning if desired.
+
+Target File: `core/homeassistant/components/frontend/__init__.py`
+Action: The frontend integration registers the panel. You may need to adjust default panel titles here.
+
+================================================================================
+2. UI CUSTOMIZATION (The "Frontend")
+================================================================================
+To change the look, feel, logos, and default theme:
+
+Target File: `frontend/src/html/index.html.template`
+Action:
+  - `<title>Home Assistant</title>` -> Your Title.
+  - `<meta name="application-name">`: Change content.
+  - `<meta name="theme-color">`: Change your brand color.
+  - Replace the SVG logo in the `<div id="ha-launch-screen">` section.
+  - Update any `apple-mobile-web-app-title` meta tags.
+
+Target File: `frontend/manifest.json` (and `web-manifest.json` source)
+Action: Change "name", "short_name", and icons to your own assets.
+
+Target Directory: `frontend/src/common/style/`
+Action: Search for `google_assistant` or branding colors and replace them with your CSS variables.
+
+================================================================================
+3. SYSTEM MANAGEMENT (The "Supervisor")
+================================================================================
+If you are building a custom appliance, you need to control the Supervisor:
+
+Target File: `supervisor/supervisor/const.py`
+Action:
+  - `SUPERVISOR_VERSION`: Set your version.
+  - `URL_HASSIO_VERSION`: **CRITICAL**. Point this to *your own* version.json URL.
+    - If you don't change this, your OS will auto-update back to the official Home Assistant!
+  - `URL_HASSIO_ADDONS`: Point to your own add-on repository if you want a curated store.
+  - `DESCRIPTIONS`: Change any hardcoded "Home Assistant" strings.
+
+================================================================================
+4. BUILDING THE OS (The "Operating System")
+================================================================================
+Home Assistant OS (HAOS) is built using "Buildroot".
+Since the `operating-system/` folder in this workspace is empty, you would likely need to clone the official buildroot repo:
+https://github.com/home-assistant/operating-system
+
+To make your own OS:
+1. Fork the `operating-system` repository.
+2. Edit the configs to pull **your** modified Docker containers (Core, Supervisor) instead of the official ones.
+   - You will need to build your modified Core and Supervisor as Docker images.
+   - You will need to host them on a registry (like Docker Hub or GitHub Packages).
+3. Build the OS image using the provided scripts (Vagrant/Docker build env).
+
+================================================================================
+5. ADDING CUSTOM FEATURES
+================================================================================
+Method A: Custom Components (Easiest)
+- Place your Python code in `core/homeassistant/components/your_feature/`.
+- Add it to `core/homeassistant/bootstrap.py` or default config to ensure it loads.
+
+Method B: Custom Add-ons (Modular)
+- Create a standard Home Assistant Add-on (Docker container).
+- Pre-install it by adding it to the Supervisor's default add-on list or your custom OS build scripts.
+
+================================================================================
+CHECKLIST FOR RELEASE
+================================================================================
+[ ] Rename `APPLICATION_NAME` in Core.
+[ ] Update Title & Logo in Frontend HTML.
+[ ] Re-point Update URLs in Supervisor `const.py`.
+[ ] Build Docker Images: `your-core`, `your-supervisor`, `your-frontend`.
+[ ] Update OS build config to use `your-supervisor` image.
+[ ] Test the update loop (ensure it updates from YOUR server, not official HA).

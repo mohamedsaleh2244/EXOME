@@ -1,0 +1,123 @@
+Subject: Home Assistant Project Structure & File Relationships Overview
+Date: 2026-02-10
+Location: /media/sf_shared_F/Home Assistant/extras/project_structure_overview.txt
+
+================================================================================
+1. PROJECT ROOT OVERVIEW
+================================================================================
+The project is a "monorepo" style collection containing the entire Home Assistant ecosystem.
+It is divided into distinct active components that communicate with each other.
+
+Root Directories:
+- core/ ........................ The "Brain" (Python Backend). Main logic server.
+- frontend/ .................... The "Face" (TypeScript/Mobile/Web). The UI you see.
+- supervisor/ .................. The "Manager" (Python/Docker). Manages the OS & Core.
+- operating-system/ ............ (Mostly empty/placeholder) Build scripts for HAOS.
+- home-assistant.io/ ........... User Documentation website (Jekyll/Ruby).
+- developers.home-assistant/ ... Developer Documentation website (Docusaurus/Node).
+- extras/ ...................... Custom folder for your notes and deep dives (This file).
+
+Relationships:
+[Supervisor] --(manages)--> [Docker Containers: Core, Audio, DNS, etc.]
+[Frontend]   --(connects via WebSocket)--> [Core]
+[Core]       --(loads)--> [Integrations in core/components/]
+
+================================================================================
+2. CORE (`core/`)
+================================================================================
+Language: Python 3
+Purpose: Event loop, state machine, device registry, and automation logic.
+
+Key Files & Folders:
+- requirements.txt .............. Python dependencies allowed for the core itself.
+- requirements_all.txt .......... HUGE list of dependencies for ALL integrations.
+- setup.py ...................... Standard Python setup script.
+- pyproject.toml ................ Modern Python build configuration.
+
+Directory `core/homeassistant/`:
+- __main__.py ................... ENTRY POINT. Starts the event loop & config validation.
+- __init__.py ................... Package initialization.
+- const.py ...................... Global constants (versions, default ports).
+- core.py ....................... The Heart. Defines `HomeAssistant` class & EventBus.
+  |-> Relationships: This file is imported by almost everything to access `hass` object.
+- bootstrap.py .................. Startup logic. Loads integrations, handles safe mode.
+- exceptions.py ................. Custom error types used throughout the app.
+- loader.py ..................... Logic to find and load integrations from `components/`.
+
+Directory `core/homeassistant/components/`:
+(Contains 1000+ folders, each is an "Integration")
+- [component_name]/__init__.py .. Setup logic for the integration.
+- [component_name]/manifest.json. Metadata (dependencies, codeowners, docs).
+- [component_name]/sensor.py .... If the integration provides sensors.
+- [component_name]/light.py ..... If the integration provides lights.
+
+Directory `core/homeassistant/helpers/`:
+- entity.py ..................... Base class for all entities (lights, switches, etc).
+- service.py .................... Helpers to register callable services.
+- discovery.py .................. Helpers to discover devices on the network.
+
+================================================================================
+3. FRONTEND (`frontend/`)
+================================================================================
+Language: TypeScript, JavaScript (LitElement)
+Purpose: Single Page Application (SPA) that runs in the browser.
+
+Key Files & Folders:
+- package.json .................. Node.js dependencies and build scripts.
+- build-scripts/ ................ Webpack/Rollup configs to bundle the JS.
+- src/ .......................... The source code.
+
+Directory `frontend/src/`:
+- entrypoints/ .................. Files that become the generated `.js` bundles.
+  |-> app.ts: The main entry point for the "Home Assistant" app.
+  |-> core.ts: A lighter build for just core functionality.
+- layouts/ ...................... High-level page layouts (sidebar, header).
+- components/ ................... Reusable UI bits (buttons, sliders, icons).
+- panels/ ....................... The main "Tab" views.
+  |-> loovelace/: The Dashboard (See extras/component_deep_dive.md).
+  |-> config/: The Settings panel.
+  |-> developer-tools/: The dev tools panel.
+- data/ ......................... Logic layer. Contains types and websocket calls.
+  |-> Relationships: Files here define how to talk to `core`. e.g., `callService()`.
+
+================================================================================
+4. SUPERVISOR (`supervisor/`)
+================================================================================
+Language: Python 3 (Asyncio)
+Purpose: Runs as a privileged Docker container. Manages the host system.
+
+Key Files & Folders:
+- Dockerfile .................... Defines the Supervisor Docker image.
+- requirements.txt .............. Python dependencies.
+
+Directory `supervisor/supervisor/`:
+- __main__.py ................... ENTRY POINT. Starts the Supervisor loop.
+- core.py ....................... Main logic controller.
+- docker/ ....................... Logic to control Docker API (start/stop containers).
+  |-> manager.py: Orchestrates the containers.
+- api/ .......................... The REST API exposed to Core and Host.
+  |-> panel.py: Handles requests from the Frontend Ingress.
+- addons/ ....................... Logic for managing Add-ons (install/uninstall).
+- homeassistant/ ................ Logic specifically for managing the Core container.
+  |-> secrets.py: Manages secrets.yaml injection.
+
+================================================================================
+5. DOCUMENTATION
+================================================================================
+- home-assistant.io/ ............ The main website source (Jekyll).
+  |-> source/_integrations/: Markdown files for every integration's docs.
+- developers.home-assistant/ .... The dev docs (Docusaurus).
+  |-> docs/: Technical documentation for API and Architecture.
+
+================================================================================
+SUMMARY OF FLOW
+================================================================================
+1. The **Supervisor** starts up (on HAOS systems).
+2. Supervisor uses **Docker** to start the **Core** container.
+3. **Core** starts `__main__.py`, loads `components/`, and connects to the network.
+4. User opens browser.
+5. Browser loads **Frontend** (HTML/JS) from Core's HTTP server.
+6. **Frontend** opens a WebSocket connection to **Core**.
+7. User clicks a button in Frontend -> WebSocket msg -> Core.
+8. Core finds the right component -> executes Python logic -> talks to device.
+================================================================================
