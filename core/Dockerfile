@@ -6,13 +6,10 @@ FROM ${BUILD_FROM}
 
 LABEL \
     io.hass.type="core" \
-    org.opencontainers.image.authors="The Home Assistant Authors" \
-    org.opencontainers.image.description="Open-source home automation platform running on Python 3" \
-    org.opencontainers.image.documentation="https://www.home-assistant.io/docs/" \
+    org.opencontainers.image.authors="EXOME Authors" \
+    org.opencontainers.image.description="EXOME - Open-source home automation platform running on Python 3" \
     org.opencontainers.image.licenses="Apache-2.0" \
-    org.opencontainers.image.source="https://github.com/home-assistant/core" \
-    org.opencontainers.image.title="Home Assistant" \
-    org.opencontainers.image.url="https://www.home-assistant.io/"
+    org.opencontainers.image.title="EXOME"
 
 # Synchronize with homeassistant/core.py:async_stop
 ENV \
@@ -20,7 +17,7 @@ ENV \
     UV_SYSTEM_PYTHON=true \
     UV_NO_CACHE=true
 
-# Home Assistant S6-Overlay
+# EXOME S6-Overlay
 COPY rootfs /
 
 # Add go2rtc binary
@@ -34,29 +31,29 @@ RUN \
 
 WORKDIR /usr/src
 
-## Setup Home Assistant Core dependencies
+## Setup EXOME Core dependencies
 COPY requirements.txt homeassistant/
 COPY homeassistant/package_constraints.txt homeassistant/homeassistant/
 RUN \
     uv pip install \
-        --no-build \
-        -r homeassistant/requirements.txt
+    --no-build \
+    -r homeassistant/requirements.txt
 
 COPY requirements_all.txt home_assistant_frontend-* home_assistant_intents-* homeassistant/
 RUN \
     if ls homeassistant/home_assistant_*.whl 1> /dev/null 2>&1; then \
-        uv pip install homeassistant/home_assistant_*.whl; \
+    uv pip install homeassistant/home_assistant_*.whl; \
     fi \
     && uv pip install \
-        --no-build \
-        -r homeassistant/requirements_all.txt
+    --no-build \
+    -r homeassistant/requirements_all.txt
 
-## Setup Home Assistant Core
+## Setup EXOME Core
 COPY . homeassistant/
 RUN \
     uv pip install \
-        -e ./homeassistant \
+    -e ./homeassistant \
     && python3 -m compileall \
-        homeassistant/homeassistant
+    homeassistant/homeassistant
 
 WORKDIR /config

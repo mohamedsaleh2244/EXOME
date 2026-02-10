@@ -1,10 +1,10 @@
 {
-  "description": "A frontend for Home Assistant",
+  "description": "A frontend for EXOME",
   "repository": {
     "type": "git",
     "url": "https://github.com/home-assistant/frontend"
   },
-  "name": "home-assistant-frontend",
+  "name": "exome-frontend",
   "version": "1.0.0",
   "scripts": {
     "build": "script/build_frontend",

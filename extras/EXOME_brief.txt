@@ -1,0 +1,13 @@
+EXOME Project Overview
+
+EXOME is a powerful, privacy-focused home automation platform that prioritizes local control. It serves as the central brain for your smart home, allowing you to connect and manage devices from thousands of different brands in a single interface.
+
+Key Components:
+1.  **EXOME Core**: The python-based backend that handles all the logic, automations, and device integrations. It runs 24/7 to monitor your home.
+2.  **EXOME Frontend**: The modern, responsive web interface (and mobile app) where you view your dashboards, control devices, and configure settings.
+3.  **EXOME Supervisor**: A system management tool that allows you to easily update the system, manage backups, and install "Add-ons" (extra applications like mosquito brokers, database managers, etc.).
+
+What it does:
+-   **Integration**: Connects to lights, thermostats, cameras, media players, and more.
+-   **Automation**: Runs complex rules (e.g., "Turn on lights when motion is detected but only after sunset").
+-   **Local Operations**: Your data stays in your home, not in the cloud. It works even if the internet goes down.

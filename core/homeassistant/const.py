@@ -1,4 +1,4 @@
-"""Constants used by Home Assistant components."""
+"""Constants used by EXOME components."""
 
 from __future__ import annotations
 
@@ -14,9 +14,9 @@ if TYPE_CHECKING:
     from .core import EventStateChangedData, EventStateReportedData
     from .helpers.typing import NoEventData
 
-APPLICATION_NAME: Final = "HomeAssistant"
-MAJOR_VERSION: Final = 2026
-MINOR_VERSION: Final = 2
+APPLICATION_NAME: Final = "EXOME"
+MAJOR_VERSION: Final = 1
+MINOR_VERSION: Final = 0
 PATCH_VERSION: Final = "0.dev0"
 __short_version__: Final = f"{MAJOR_VERSION}.{MINOR_VERSION}"
 __version__: Final = f"{__short_version__}.{PATCH_VERSION}"

@@ -181,7 +181,7 @@ MANIFEST_JSON = Manifest(
     {
         "background_color": "#FFFFFF",
         "description": (
-            "Home automation platform that puts local control and privacy first."
+            "EXOME automation platform that puts local control and privacy first."
         ),
         "dir": "ltr",
         "display": "standalone",
@@ -211,8 +211,8 @@ MANIFEST_JSON = Manifest(
             }
         ],
         "lang": "en-US",
-        "name": "Home Assistant",
-        "short_name": "Home Assistant",
+        "name": "EXOME",
+        "short_name": "EXOME",
         "start_url": "/?homescreen=1",
         "id": "/?homescreen=1",
         "theme_color": DEFAULT_THEME_COLOR,

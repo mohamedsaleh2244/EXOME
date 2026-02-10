@@ -543,8 +543,8 @@
         "triggered_by_event": "triggered by event",
         "triggered_by_time": "triggered by time",
         "triggered_by_time_pattern": "triggered by time pattern",
-        "triggered_by_homeassistant_stopping": "triggered by Home Assistant stopping",
-        "triggered_by_homeassistant_starting": "triggered by Home Assistant starting",
+        "triggered_by_homeassistant_stopping": "triggered by EXOME stopping",
+        "triggered_by_homeassistant_starting": "triggered by EXOME starting",
         "show_trace": "[%key:ui::panel::config::automation::editor::show_trace%]",
         "retrieval_error": "Could not load activity",
         "not_loaded": "[%key:ui::dialogs::helper_settings::platform_not_loaded%]",
@@ -1335,7 +1335,7 @@
     "dialogs": {
       "safe_mode": {
         "title": "Safe mode",
-        "text": "Home Assistant is running in safe mode, custom integrations and frontend modules are not available. Restart Home Assistant to exit safe mode."
+        "text": "EXOME is running in safe mode, custom integrations and frontend modules are not available. Restart EXOME to exit safe mode."
       },
       "quick-bar": {
         "commands_title": "Commands",
@@ -1425,13 +1425,13 @@
         },
         "filter_placeholder": "Search entities",
         "filter_placeholder_devices": "Search devices",
-        "title": "Search Home Assistant",
+        "title": "Search EXOME",
         "key_c_tip": "[%key:ui::tips::key_c_tip%]",
         "nothing_found": "Nothing found!"
       },
       "voice_command": {
         "title": "Assist",
-        "did_not_hear": "Home Assistant did not hear anything",
+        "did_not_hear": "EXOME did not hear anything",
         "did_not_understand": "Didn't quite get that",
         "found": "I found the following for you:",
         "error": "Oops, an error has occurred",
@@ -1441,8 +1441,8 @@
         "send_text": "Send text",
         "start_listening": "Start listening",
         "manage_assistants": "Manage assistants",
-        "not_supported_microphone_browser": "Your connection to Home Assistant is not secured using HTTPS. This causes browsers to block Home Assistant from accessing the microphone.",
-        "not_supported_microphone_documentation": "Use the Home Assistant app or visit {documentation_link} to learn how to use a secure URL",
+        "not_supported_microphone_browser": "Your connection to EXOME is not secured using HTTPS. This causes browsers to block EXOME from accessing the microphone.",
+        "not_supported_microphone_documentation": "Use the EXOME app or visit {documentation_link} to learn how to use a secure URL",
         "not_supported_microphone_documentation_link": "the documentation",
         "unknown_error_load_assist": "Loading the Assist pipeline failed",
         "not_found_error_load_assist": "Cannot find the Assist pipeline"
@@ -1500,13 +1500,13 @@
           "install": "Install",
           "update": "Update",
           "auto_update_enabled_title": "Cannot skip version",
-          "auto_update_enabled_text": "Automatic updates for this item have been enabled; skipping it is, therefore, unavailable. You can either install this update now or wait for Home Assistant to do it automatically.",
+          "auto_update_enabled_text": "Automatic updates for this item have been enabled; skipping it is, therefore, unavailable. You can either install this update now or wait for EXOME to do it automatically.",
           "create_backup": {
             "automatic": "Automatic backup before update",
             "automatic_description_last": "Last automatic backup {relative_time}.",
             "automatic_description_none": "No automatic backup yet.",
             "manual": "Create manual backup before update",
-            "manual_description": "Includes Home Assistant settings and history.",
+            "manual_description": "Includes EXOME settings and history.",
             "addon": "Keep backup of the last version",
             "addon_description": "For easily restoring to version {version}",
             "generic": "Create backup"
@@ -1692,9 +1692,9 @@
           "switch_as_x_confirm": "This switch will be hidden and a new {domain} will be added. Your existing configurations using the switch will continue to work.",
           "switch_as_x_remove_confirm": "This {domain} will be removed and the original switch will be visible again. Your existing configurations using the {domain} will no longer work!",
           "switch_as_x_change_confirm": "This {domain_1} will be removed and will be replaced by a new {domain_2}. Your existing configurations using the {domain_1} will no longer work!",
-          "enabled_description": "Disabled entities will not be added to Home Assistant.",
-          "enabled_delay_confirm": "The enabled entities will be added to Home Assistant in {delay} seconds",
-          "enabled_restart_confirm": "Restart Home Assistant to finish enabling the entities",
+          "enabled_description": "Disabled entities will not be added to EXOME.",
+          "enabled_delay_confirm": "The enabled entities will be added to EXOME in {delay} seconds",
+          "enabled_restart_confirm": "Restart EXOME to finish enabling the entities",
           "hidden_explanation": "Hidden entities will not be included in auto-populated dashboards or when their area, device or label is referenced. Their history is still tracked and you can still interact with them with actions.",
           "delete": "Delete",
           "confirm_delete": "Are you sure you want to delete this entity?",
@@ -1709,7 +1709,7 @@
             "preload_stream": "Preload camera stream",
             "preload_stream_description": "This keeps the camera stream open in the background so it shows quicker. Warning! This is device intensive.",
             "stream_orientation": "Camera stream orientation",
-            "stream_orientation_description": "The orientation transformation to use for the camera stream.\nWarning: Stream orientation processing occurs on the Home Assistant device and may impact system performance. When possible, configure this setting directly on your camera instead.",
+            "stream_orientation_description": "The orientation transformation to use for the camera stream.\nWarning: Stream orientation processing occurs on the EXOME device and may impact system performance. When possible, configure this setting directly on your camera instead.",
             "stream_orientation_1": "No orientation transform",
             "stream_orientation_2": "Mirror",
             "stream_orientation_3": "Rotate 180",
@@ -1767,7 +1767,7 @@
         "view_entity": "More info about entity"
       },
       "restart": {
-        "heading": "Restart Home Assistant",
+        "heading": "Restart EXOME",
         "advanced_options": "Advanced options",
         "backup_in_progress": "A backup is currently being created. The action will automatically proceed once the backup process is complete.",
         "upload_in_progress": "A backup upload is currently in progress. The action will automatically proceed once the upload process is complete.",
@@ -1783,24 +1783,24 @@
           "failed": "Failed to reload configuration"
         },
         "restart": {
-          "title": "Restart Home Assistant",
+          "title": "Restart EXOME",
           "description": "Interrupts all running automations and scripts.",
-          "confirm_title": "Restart Home Assistant?",
+          "confirm_title": "Restart EXOME?",
           "confirm_description": "This will interrupt all running automations and scripts.",
           "confirm_action": "Restart",
           "confirm_action_backup": "Wait and restart",
-          "failed": "Failed to restart Home Assistant"
+          "failed": "Failed to restart EXOME"
         },
         "stop": {
-          "confirm_title": "Stop Home Assistant?",
+          "confirm_title": "Stop EXOME?",
           "confirm_description": "This will interrupt all running automations and scripts.",
           "confirm_action": "Stop"
         },
         "reboot": {
           "title": "Reboot system",
-          "description": "Restarts the system running Home Assistant and all add-ons.",
+          "description": "Restarts the system running EXOME and all add-ons.",
           "confirm_title": "Reboot system?",
-          "confirm_description": "This will reboot the complete system which includes Home Assistant and all the add-ons.",
+          "confirm_description": "This will reboot the complete system which includes EXOME and all the add-ons.",
           "confirm_action": "Reboot",
           "action_toast": "Rebooting system",
           "confirm_action_backup": "Wait and reboot",
@@ -1808,22 +1808,22 @@
         },
         "shutdown": {
           "title": "Shut down system",
-          "description": "Shuts down the system running Home Assistant and all add-ons.",
+          "description": "Shuts down the system running EXOME and all add-ons.",
           "confirm_title": "Shut down system?",
-          "confirm_description": "This will shut down the complete system which includes Home Assistant and all add-ons.",
+          "confirm_description": "This will shut down the complete system which includes EXOME and all add-ons.",
           "confirm_action": "Shut down",
           "confirm_action_backup": "Wait and shut down",
           "action_toast": "Shutting down system",
           "failed": "Failed to shut down system"
         },
         "restart-safe-mode": {
-          "title": "Restart Home Assistant in safe mode",
-          "description": "Restarts Home Assistant without loading any custom integrations and frontend modules.",
-          "confirm_title": "Restart Home Assistant in safe mode?",
-          "confirm_description": "This will restart Home Assistant without loading any custom integrations and frontend modules.",
+          "title": "Restart EXOME in safe mode",
+          "description": "Restarts EXOME without loading any custom integrations and frontend modules.",
+          "confirm_title": "Restart EXOME in safe mode?",
+          "confirm_description": "This will restart EXOME without loading any custom integrations and frontend modules.",
           "confirm_action": "Restart",
           "confirm_action_backup": "Wait and Restart",
-          "failed": "Failed to restart Home Assistant"
+          "failed": "Failed to restart EXOME"
         }
       },
       "aliases": {
@@ -1884,12 +1884,12 @@
           "minimum": "Minimum value",
           "maximum": "Maximum value",
           "initial": "Initial value",
-          "restore": "Restore the last known value when Home Assistant starts",
+          "restore": "Restore the last known value when EXOME starts",
           "step": "Step size"
         },
         "timer": {
           "duration": "Duration",
-          "restore": "Restore state and time when Home Assistant starts"
+          "restore": "Restore state and time when EXOME starts"
         },
         "schedule": {
           "delete": "Delete item?",
@@ -1937,8 +1937,8 @@
         "enable_new_entities_label": "Enable newly added entities",
         "enable_new_entities_description": "If newly discovered devices for {integration} should be automatically added.",
         "enable_polling_label": "Enable polling for changes",
-        "enable_polling_description": "If Home Assistant should automatically poll {integration} entities for state changes.",
-        "restart_home_assistant": "You need to restart Home Assistant for your changes to take effect.",
+        "enable_polling_description": "If EXOME should automatically poll {integration} entities for state changes.",
+        "restart_home_assistant": "You need to restart EXOME for your changes to take effect.",
         "update": "Update"
       },
       "zha_reconfigure_device": {
@@ -2085,7 +2085,7 @@
         },
         "new": {
           "header": "[%key:ui::dialogs::matter-add-device::main::header%]",
-          "note": "You need to use the Home Assistant Companion app on your mobile phone to add Matter devices.",
+          "note": "You need to use the EXOME Companion app on your mobile phone to add Matter devices.",
           "download_app": "Install it from the Google Play Store or the App Store if you don't have it.",
           "playstore": "[%key:ui::panel::page-onboarding::welcome::playstore%]",
           "appstore": "[%key:ui::panel::page-onboarding::welcome::appstore%]"
@@ -2104,8 +2104,8 @@
           "step_3": "Tap {link_apps_services} and choose {home_assistant} from the list.",
           "linked_matter_apps_services": "Linked Matter apps and services",
           "link_apps_services": "Link apps and services",
-          "no_home_assistant": "I can't find Home Assistant on the list",
-          "redirect": "You are redirected to the Home Assistant app. Please follow the instructions."
+          "no_home_assistant": "I can't find EXOME on the list",
+          "redirect": "You are redirected to the EXOME app. Please follow the instructions."
         },
         "google_home_fallback": {
           "header": "Copy pairing code",
@@ -2150,7 +2150,7 @@
           "title": "Searching",
           "on_any_page": "On any page",
           "on_pages_with_tables": "On pages with tables",
-          "search": "Search Home Assistant",
+          "search": "Search EXOME",
           "search_command": "search command",
           "search_entities": "search entities",
           "search_devices": "search devices",
@@ -2178,7 +2178,7 @@
         },
         "other": {
           "title": "Other",
-          "my_link": "get My Home Assistant link",
+          "my_link": "get My EXOME link",
           "show_shortcuts": "show keyboard shortcuts"
         }
       }
@@ -2232,8 +2232,8 @@
     "notification_toast": {
       "action_failed": "Failed to perform the action {service}.",
       "connection_lost": "Connection lost. Reconnecting…",
-      "started": "Home Assistant has started!",
-      "starting": "Home Assistant is starting. Not everything will be available until it is finished.",
+      "started": "EXOME has started!",
+      "starting": "EXOME is starting. Not everything will be available until it is finished.",
       "wrapping_up_startup": "Wrapping up startup. Not everything will be available until it is finished.",
       "integration_starting": "Starting {integration}. Not everything will be available until it is finished.",
       "triggered": "Triggered {name}",
@@ -2258,21 +2258,21 @@
         "editor": {
           "title": "Edit home page",
           "description": "Configure your home page display preferences.",
-          "favorite_entities_helper": "Display your favorite entities. Home Assistant will still suggest based on commonly used up to 8 slots.",
+          "favorite_entities_helper": "Display your favorite entities. EXOME will still suggest based on commonly used up to 8 slots.",
           "save_failed": "Failed to save home page configuration",
           "areas_hint": "You can rearrange your floors and areas in the order that best represents your house on the {areas_page}.",
           "areas_page": "areas page"
         }
       },
       "my": {
-        "not_supported": "This redirect is not supported by your Home Assistant instance. Check the {link} for the supported redirects and the version they where introduced.",
-        "component_not_loaded": "This redirect is not supported by your Home Assistant instance. You need the integration {integration} to use this redirect.",
-        "no_supervisor": "This redirect is not supported by your Home Assistant installation. It needs either the Home Assistant OS or Home Assistant Supervised installation method. For more information, see the {docs_link}.",
-        "not_app": "This redirect only works from a mobile device that has the Home Assistant Companion app installed. {link}.",
+        "not_supported": "This redirect is not supported by your EXOME instance. Check the {link} for the supported redirects and the version they where introduced.",
+        "component_not_loaded": "This redirect is not supported by your EXOME instance. You need the integration {integration} to use this redirect.",
+        "no_supervisor": "This redirect is not supported by your EXOME installation. It needs either the EXOME OS or EXOME Supervised installation method. For more information, see the {docs_link}.",
+        "not_app": "This redirect only works from a mobile device that has the EXOME Companion app installed. {link}.",
         "url_error": "The provided URL is invalid.",
         "documentation": "documentation",
         "download_app": "Click here to download the app",
-        "faq_link": "My Home Assistant FAQ",
+        "faq_link": "My EXOME FAQ",
         "error": "An unknown error occurred"
       },
       "config": {
@@ -2283,7 +2283,7 @@
             "actions": "Actions"
           }
         },
-        "header": "Configure Home Assistant",
+        "header": "Configure EXOME",
         "dashboard": {
           "devices": {
             "main": "Devices & services",
@@ -2295,11 +2295,11 @@
           },
           "backup": {
             "main": "Backup",
-            "secondary": "Generate backups of your Home Assistant configuration"
+            "secondary": "Generate backups of your EXOME configuration"
           },
           "supervisor": {
             "main": "Add-ons",
-            "secondary": "Run extra applications next to Home Assistant"
+            "secondary": "Run extra applications next to EXOME"
           },
           "dashboards": {
             "main": "Dashboards",
@@ -2380,7 +2380,7 @@
         },
         "updates": {
           "caption": "Updates",
-          "description": "Manage updates of Home Assistant, add-ons, and devices",
+          "description": "Manage updates of EXOME, add-ons, and devices",
           "no_updates": "No updates available",
           "no_update_entities": {
             "title": "Unable to check for updates",
@@ -2404,7 +2404,7 @@
         },
         "repairs": {
           "caption": "Repairs",
-          "description": "Find and fix issues with your Home Assistant instance",
+          "description": "Find and fix issues with your EXOME instance",
           "title": "{count} {count, plural,\n  one {repair}\n  other {repairs}\n}",
           "no_repairs": "There are currently no repairs pending",
           "more_repairs": "Show all repairs",
@@ -2451,7 +2451,7 @@
         },
         "ai_task": {
           "header": "AI suggestions",
-          "description": "Home Assistant can use generative AI to help you with tasks. Look for the button with the {button} icon throughout Home Assistant to get suggestions. Select an AI task entity to use this feature.",
+          "description": "EXOME can use generative AI to help you with tasks. Look for the button with the {button} icon throughout EXOME to get suggestions. Select an AI task entity to use this feature.",
           "gen_data_header": "Data generation tasks",
           "gen_data_description": "Suggest automation names.",
           "gen_image_header": "Image generation tasks",
